@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>入力画面</title>
+	<link th:href="@{/css/inputAndConfirmation.css}" rel="stylesheet">
+</head>
+
+<body>
+	<form th:action="@{/confirmation}" th:object="${inputForm}" method="post">
+		<div class="table_center">
+		<table border="0">
+
+			<tr>
+				<td>
+					<label for="name" class="i">名前</label>
+				</td>
+
+				<td>
+					<input type="text" th:field="*{name}">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="kana">フリガナ</label>
+				</td>
+
+				<td>
+					<input type="text" th:field="*{kana}">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="gender">性別</label>
+				</td>
+
+				<td>
+					<label><input type="radio" name="gender" th:field="*{gender}" value = "男" 
+						th:checked = "${inputForm.getGender() == '男'}" 
+						>男性</label>
+					<label><input type="radio" name="gender" th:field="*{gender}" value = "女" 
+						th:checked = "${inputForm.getGender() == '女'}" 
+						>女性</label>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="hobby">趣味</label>
+				</td>
+				<td>
+					<div class="flex">
+					<label><input type="checkbox" th:field="*{hobby[0]}" th:value="${true}"></input>項目1</label>
+					<label><input type="checkbox" th:field="*{hobby[1]}" th:value="${true}"></input>項目2</label>
+					<label><input type="checkbox" th:field="*{hobby[2]}" th:value="${true}"></input>項目3</label>
+					<label><input type="checkbox" th:field="*{hobby[3]}" th:value="${true}"></input>項目4</label>
+					<label><input type="checkbox" th:field="*{hobby[4]}" th:value="${true}"></input>項目5</label>
+					<br>
+					<label><input type="checkbox" th:field="*{hobby[5]}" th:value="${true}"></input>項目6</label>
+					<label><input type="checkbox" th:field="*{hobby[6]}" th:value="${true}"></input>項目7</label>
+					<label><input type="checkbox" th:field="*{hobby[7]}" th:value="${true}"></input>項目8</label>
+					<label><input type="checkbox" th:field="*{hobby[8]}" th:value="${true}"></input>項目9</label>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>一言</label>
+				</td>
+				<td>
+					<textarea th:field="*{word}"></textarea>
+				</td>
+			</tr>
+		</table>
+		</div>
+		<div class="table_center">
+		<table>
+			<tr>
+				<a th:href="@{/top}">戻る</a>
+			</tr>
+			<tr>
+				<button type="submit">次へ</button>
+			</tr>
+
+
+		</table>
+		</div>
+	</form>
+</body>
+
+</html>
